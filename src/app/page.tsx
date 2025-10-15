@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState } from 'react' // Book Lion App
 import UploadPanel from '@/components/UploadPanel'
 import CharacterBuilder from '@/components/CharacterBuilder'
 import CharacterPreview from '@/components/CharacterPreview'
