@@ -1,0 +1,401 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Mubasic-inspired Color Palette - Warm and Playful */
+  --primary-blue: #4A90E2;
+  --warm-orange: #FF6B35;
+  --sunshine-yellow: #FFD23F;
+  --soft-pink: #FFB3BA;
+  --mint-green: #A8E6CF;
+  --lavender: #C7CEEA;
+  --warm-gray: #F5F5F5;
+  --text-dark: #2C3E50;
+  --text-medium: #5D6D7E;
+  --text-light: #85929E;
+  --white: #FFFFFF;
+  --black: #1A1A1A;
+}
+
+body {
+  color: var(--text-dark);
+  background: linear-gradient(135deg, #F4E4BC 0%, #E6D3A3 25%, #D4C4A8 50%, #C4B5A0 75%, #B8A082 100%);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* African Safari Background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(ellipse at 20% 80%, rgba(139, 69, 19, 0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(160, 82, 45, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse at 40% 40%, rgba(210, 180, 140, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 60% 60%, rgba(107, 142, 35, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 10% 10%, rgba(255, 215, 0, 0.04) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Safari texture overlay */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(139, 69, 19, 0.03) 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(160, 82, 45, 0.02) 1px, transparent 1px),
+    radial-gradient(circle at 50% 50%, rgba(107, 142, 35, 0.02) 1px, transparent 1px);
+  background-size: 50px 50px, 80px 80px, 60px 60px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .soft-panel {
+    @apply p-8 rounded-3xl;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 248, 220, 0.9) 100%);
+    box-shadow: 0 8px 32px rgba(139, 69, 19, 0.15), 0 2px 8px rgba(160, 82, 45, 0.1);
+    border: 2px solid rgba(139, 69, 19, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+  }
+  
+  .soft-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #8B4513 0%, #D2691E 25%, #CD853F 50%, #DAA520 75%, #B8860B 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .soft-panel:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(139, 69, 19, 0.2), 0 4px 12px rgba(160, 82, 45, 0.15);
+    border-color: #8B4513;
+  }
+  
+  .soft-panel:hover::before {
+    opacity: 1;
+  }
+  
+  .giraffe-panel {
+    @apply p-8 rounded-3xl;
+    background: 
+      /* Giraffe patch pattern */
+      radial-gradient(ellipse 60px 40px at 20% 30%, #8B4513 0%, #8B4513 70%, transparent 70%),
+      radial-gradient(ellipse 50px 35px at 70% 20%, #A0522D 0%, #A0522D 70%, transparent 70%),
+      radial-gradient(ellipse 45px 30px at 40% 70%, #8B4513 0%, #8B4513 70%, transparent 70%),
+      radial-gradient(ellipse 55px 38px at 80% 60%, #A0522D 0%, #A0522D 70%, transparent 70%),
+      radial-gradient(ellipse 40px 25px at 10% 80%, #8B4513 0%, #8B4513 70%, transparent 70%),
+      radial-gradient(ellipse 35px 20px at 60% 10%, #A0522D 0%, #A0522D 70%, transparent 70%),
+      /* Base cream background */
+      linear-gradient(135deg, rgba(255, 248, 220, 0.95) 0%, rgba(255, 228, 196, 0.9) 100%);
+    background-size: 100px 100px, 100px 100px, 100px 100px, 100px 100px, 100px 100px, 100px 100px, 100% 100%;
+    box-shadow: 0 8px 32px rgba(139, 69, 19, 0.2), 0 2px 8px rgba(160, 82, 45, 0.15);
+    border: 2px solid rgba(139, 69, 19, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+  }
+  
+  .zebra-panel {
+    @apply p-8 rounded-3xl;
+    background: 
+      /* Tiki texture pattern - geometric shapes and lines */
+      radial-gradient(circle at 20% 20%, #8B4513 0%, #8B4513 3px, transparent 3px),
+      radial-gradient(circle at 80% 30%, #A0522D 0%, #A0522D 2px, transparent 2px),
+      radial-gradient(circle at 40% 70%, #8B4513 0%, #8B4513 4px, transparent 4px),
+      radial-gradient(circle at 70% 80%, #A0522D 0%, #A0522D 3px, transparent 3px),
+      /* Tiki mask patterns - triangular and geometric shapes */
+      linear-gradient(45deg, transparent 0%, transparent 48%, #8B4513 48%, #8B4513 52%, transparent 52%),
+      linear-gradient(-45deg, transparent 0%, transparent 48%, #A0522D 48%, #A0522D 52%, transparent 52%),
+      linear-gradient(90deg, transparent 0%, transparent 45%, #8B4513 45%, #8B4513 55%, transparent 55%),
+      linear-gradient(0deg, transparent 0%, transparent 45%, #A0522D 45%, #A0522D 55%, transparent 55%),
+      /* Tiki carving lines */
+      linear-gradient(30deg, transparent 0%, transparent 48%, #654321 48%, #654321 50%, transparent 50%),
+      linear-gradient(-30deg, transparent 0%, transparent 48%, #654321 48%, #654321 50%, transparent 50%),
+      /* Base wood texture */
+      linear-gradient(135deg, rgba(222, 184, 135, 0.95) 0%, rgba(210, 180, 140, 0.9) 25%, rgba(205, 133, 63, 0.85) 50%, rgba(160, 82, 45, 0.9) 75%, rgba(139, 69, 19, 0.95) 100%);
+    background-size: 40px 40px, 30px 30px, 50px 50px, 35px 35px, 60px 60px, 60px 60px, 80px 80px, 80px 80px, 100px 100px, 100px 100px, 100% 100%;
+    box-shadow: 0 8px 32px rgba(139, 69, 19, 0.3), 0 2px 8px rgba(160, 82, 45, 0.2);
+    border: 3px solid rgba(139, 69, 19, 0.4);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+  }
+  
+  .leopard-panel {
+    @apply p-8 rounded-3xl;
+    background: 
+      /* Thick horizontal white stripes on black background */
+      linear-gradient(0deg, #000 0%, #000 8px, transparent 8px, transparent 16px),
+      linear-gradient(0deg, transparent 0%, transparent 4px, #fff 4px, #fff 12px, transparent 12px, transparent 20px),
+      linear-gradient(0deg, #000 0%, #000 6px, transparent 6px, transparent 14px),
+      linear-gradient(0deg, transparent 0%, transparent 2px, #fff 2px, #fff 10px, transparent 10px, transparent 18px),
+      linear-gradient(0deg, #000 0%, #000 10px, transparent 10px, transparent 18px),
+      linear-gradient(0deg, transparent 0%, transparent 6px, #fff 6px, #fff 14px, transparent 14px, transparent 22px),
+      /* Base black background */
+      linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(20, 20, 20, 0.9) 100%);
+    background-size: 24px 24px, 24px 24px, 20px 20px, 20px 20px, 28px 28px, 22px 22px, 100% 100%;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+  }
+  
+  .giraffe-panel:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(139, 69, 19, 0.3), 0 4px 12px rgba(160, 82, 45, 0.2);
+    border-color: #8B4513;
+  }
+  
+  .zebra-panel:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.2);
+    border-color: #000;
+  }
+  
+  .leopard-panel:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(139, 69, 19, 0.3), 0 4px 12px rgba(160, 82, 45, 0.2);
+    border-color: #8B4513;
+  }
+  
+  .soft-button {
+    @apply font-bold text-white px-8 py-4 rounded-full;
+    background: linear-gradient(135deg, var(--warm-orange) 0%, var(--primary-blue) 100%);
+    box-shadow: 0 4px 16px rgba(255, 107, 53, 0.3), 0 2px 8px rgba(74, 144, 226, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    border: none;
+  }
+  
+  .soft-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s ease-in-out;
+  }
+  
+  .soft-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4), 0 4px 12px rgba(74, 144, 226, 0.3);
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--warm-orange) 100%);
+  }
+  
+  .soft-button:hover::before {
+    left: 100%;
+  }
+  
+  .soft-input {
+    @apply p-4 rounded-2xl border-2;
+    background: var(--white);
+    border-color: rgba(255, 107, 53, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+  }
+  
+  .soft-input:focus {
+    @apply outline-none;
+    border-color: var(--warm-orange);
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.15), 0 2px 8px rgba(0, 0, 0, 0.08);
+    background: var(--warm-gray);
+  }
+  
+  .soft-input:hover {
+    border-color: var(--primary-blue);
+    background: var(--warm-gray);
+  }
+  
+  .soft-title {
+    @apply font-bold;
+    color: var(--text-dark);
+  }
+  
+  .playful-text {
+    @apply font-medium;
+    color: var(--text-medium);
+  }
+  
+  .floating {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+  }
+  
+  .bounce-gentle {
+    animation: bounceGentle 2s ease-in-out infinite;
+  }
+  
+  @keyframes bounceGentle {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+  
+  .fun-accent {
+    background: linear-gradient(135deg, var(--warm-orange) 0%, var(--sunshine-yellow) 100%);
+    color: var(--white);
+    border-radius: 1rem;
+  }
+  
+  .fun-accent:hover {
+    background: linear-gradient(135deg, var(--sunshine-yellow) 0%, var(--warm-orange) 100%);
+    transform: translateY(-2px);
+  }
+  
+  .color-bar {
+    height: 4px;
+    background: linear-gradient(90deg, 
+      var(--warm-orange) 0%, 
+      var(--sunshine-yellow) 20%, 
+      var(--primary-blue) 40%, 
+      var(--soft-pink) 60%, 
+      var(--mint-green) 80%, 
+      var(--lavender) 100%
+    );
+    border-radius: 2px;
+  }
+  
+  .grass-bar {
+    height: 6px;
+    background: linear-gradient(90deg, 
+      #2d5016 0%, 
+      #4a7c59 15%, 
+      #6b8e23 30%, 
+      #9acd32 45%, 
+      #adff2f 60%, 
+      #7cfc00 75%, 
+      #32cd32 90%, 
+      #228b22 100%
+    );
+    border-radius: 3px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .grass-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(255, 255, 255, 0.3) 25%, 
+      transparent 50%, 
+      rgba(255, 255, 255, 0.2) 75%, 
+      transparent 100%
+    );
+    animation: grassWave 3s ease-in-out infinite;
+  }
+  
+  @keyframes grassWave {
+    0%, 100% { left: -100%; }
+    50% { left: 100%; }
+  }
+  
+  .text-gradient {
+    background: linear-gradient(135deg, var(--warm-orange) 0%, var(--primary-blue) 50%, var(--sunshine-yellow) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .hero-text {
+    font-size: clamp(3rem, 8vw, 8rem);
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+  }
+  
+  /* Accessibility improvements for text on patterned backgrounds */
+  .giraffe-panel h2,
+  .giraffe-panel h3,
+  .giraffe-panel label,
+  .giraffe-panel p {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.8);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    margin: 0.5rem 0;
+  }
+  
+  .zebra-panel h2,
+  .zebra-panel h3,
+  .zebra-panel label,
+  .zebra-panel p {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    background: rgba(255, 248, 220, 0.95);
+    color: #8B4513 !important;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    margin: 0.5rem 0;
+    font-weight: 600;
+    border: 1px solid rgba(139, 69, 19, 0.3);
+  }
+  
+  .leopard-panel h2,
+  .leopard-panel h3,
+  .leopard-panel label,
+  .leopard-panel p {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    background: rgba(255, 255, 255, 0.95);
+    color: #000 !important;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    margin: 0.5rem 0;
+    font-weight: 600;
+  }
+  
+  /* Special styling for form elements */
+  .giraffe-panel .soft-input,
+  .zebra-panel .soft-input,
+  .leopard-panel .soft-input {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border: 2px solid rgba(0, 0, 0, 0.3) !important;
+  }
+  
+  .giraffe-panel .fun-accent,
+  .zebra-panel .fun-accent,
+  .leopard-panel .fun-accent {
+    background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%) !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  }
+}
+
