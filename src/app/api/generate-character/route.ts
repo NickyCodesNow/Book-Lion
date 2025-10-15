@@ -43,7 +43,13 @@ export async function POST(request: NextRequest) {
       throw new Error('No image data returned from OpenAI')
     }
 
-    const imageUrl = response.data[0]?.url
+    // Extract the first image data safely
+    const firstImage = response.data[0]
+    if (!firstImage || !firstImage.url) {
+      throw new Error('No valid image URL returned from OpenAI')
+    }
+
+    const imageUrl = firstImage.url
 
     if (!imageUrl) {
       throw new Error('No image URL returned from OpenAI')
